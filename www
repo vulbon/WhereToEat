@@ -1,0 +1,34 @@
+var express = require("express");
+var path = require("path");
+var compression = require("compression");
+var Common = require("./bin/Common");
+
+var app = express();
+app.use(compression());
+
+/* At the top, with other redirect methods before other routes */
+// redirect to https
+if (process.env.PORT) {
+    app.get('*', function (req, res, next) {
+        if (req.headers['x-forwarded-proto'] != 'https')
+            res.redirect('https://WeatherMapTW.herokuapp.com' + req.url)
+        else
+            next() /* Continue to other routes if we're not redirecting */
+    });
+}
+
+// static files in public
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 43200000 }));
+
+//catch 404 and forward to error handler
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+var server = app.listen((process.env.PORT || 3312), function () {
+    var host = server.address().address;
+    var port = server.address().port;
+    Common.logWithDatetime("service start", host, port);
+});
