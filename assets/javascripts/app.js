@@ -8,6 +8,8 @@ $(function () {
     var canvas_halfHeight = canvas_height / 2;
     var canvas_shortSide = canvas_width < canvas_height ? cavnas_width : canvas_height;
     var canvas_halfShortSide = canvas_shortSide / 2;
+
+    var arcRadius = canvas_halfShortSide - 10;
     var textPosition = canvas_halfShortSide / 2;
 
     var context = canvas.getContext("2d");
@@ -55,7 +57,7 @@ $(function () {
                 if (angle > 360) {
                     angle -= 360;
                 }
-                context.clearRect(-canvas_halfWidth, -canvas_halfHeight, canvas_halfWidth, canvas_halfHeight); // clean up every frame
+                context.clearRect(-canvas_halfWidth, -canvas_halfHeight, canvas_width, canvas_height); // clean up every frame
                 context.save();
                 context.rotate(angle * deg);
                 drawArcAndText();
@@ -79,7 +81,7 @@ $(function () {
     function drawArcAndText() {
         var splitDegree = 360 / restaurantList.length * deg;
         for (var i = 0; i < restaurantList.length; i++) {
-            drawArc(0, 0, canvas_halfShortSide, i * splitDegree, (i + 1) * splitDegree, colorList[i]);
+            drawArc(0, 0, arcRadius, i * splitDegree, (i + 1) * splitDegree, colorList[i]);
             context.save();
             drawText(textPosition, 0, 0, i * splitDegree + 0.5 * splitDegree, restaurantList[i]);
             context.restore();
