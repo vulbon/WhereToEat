@@ -9,10 +9,8 @@
     "publish": "Set NODE_ENV=production&gulp"
   },
   "keywords": [
-    "map",
-    "leaflet",
-    "weather",
-    "cwb"
+    "WhereToEat",
+    "Turntable"
   ],
   "author": "James",
   "license": "ISC",
@@ -24,10 +22,12 @@
     "gulp-minify-css": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.5.4",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "gulp-typescript": "^3.1.7"
   },
   "dependencies": {
     "compression": "^1.6.2",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "typescript": "^2.3.4"
   }
 }
