@@ -15,7 +15,8 @@ $(function () {
     var context = canvas.getContext("2d");
     context.translate(canvas_halfWidth, canvas_halfHeight);
     // restaurantList should get from server
-    var restaurantList = ["東野日式料理", "絕代雙驕", "羊肉麵線", "八方雲集", "悟饕便當", "肉圓", "美而美早餐店", "老五", "雲吞/咖哩飯", "丼飯", "麥當勞", "摩斯", "該找找新的了..."];
+    // var restaurantList = ["東野日式料理", "絕代雙驕", "羊肉麵線", "八方雲集", "悟饕便當", "肉圓", "美而美早餐店", "老五", "雲吞/咖哩飯", "丼飯", "麥當勞", "摩斯", "該找找新的了..."];
+    var restaurantList = ["福州乾拌麵", "麥當勞", "燒臘", "牛肉麵", "漢堡王", "蚵仔麵線", "池上飯包", "湯包大餛飩", "自助餐", "麵食館", "三商巧福", "鮮五丼", "鬍鬚張", "PizzaHut", "該找找新的了..."];
     var colorList = genColorList(restaurantList);
     // render init
     drawArcAndText();
@@ -30,7 +31,6 @@ $(function () {
         if (t) { return false };
 
         var step = 30 + Math.random() * 1000;
-        //var step = 2000;
         // 轉吧!!!
         t = setInterval(function () {
             // 停下來的門檻
@@ -126,10 +126,4 @@ $(function () {
     function genHSL(length, n) {
         return "hsl(" + n * 360 / length + ",100%,75%)";
     }
-    //function genRGB() {
-    //    var random = function () {
-    //        return Math.floor(Math.random() * 255);
-    //    }
-    //    return "rgb(" + random() + "," + random() + "," + random() + ")";
-    //}
 });
